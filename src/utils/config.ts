@@ -41,12 +41,40 @@ export const experience = [
     link: 'https://quikdev.com.br/',
   },
   {
-    period: 'Mar de 2021 - Mai de 2021 · 2 meses',
+    period: 'Mar de 2021 - mai de 2021 · 2 meses',
     title: 'Freelancer to Leme Internet',
     description:
       'Desenvolvimento de uma landing page para a empresa Leme Internet.',
     image:
       'https://images.unsplash.com/photo-1618389041494-8fab89c3f22b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
     link: 'https://www.lemeinternet.com.br/',
+  },
+]
+
+export const projects = [
+  {
+    title: 'Hytzen Shop',
+    description: 'E-commerce fullstack construído do zero.',
+    image: '/hytzenshop.png',
+    link: 'https://www.shop.hytzen.com/',
+  },
+  {
+    title: 'React Minimal Gallery',
+    description:
+      'React Minimal Gallery is a minimalist image gallery library build with tailwincss for simple projects.',
+    image: '/react-minimal-gallery.gif',
+    link: 'https://www.npmjs.com/package/react-minimal-gallery',
+  },
+  {
+    title: 'Ignews',
+    description: 'A blog project developed on Rocketseats Ignite program.',
+    image: '/ignews.png',
+    link: 'https://ignews-drab-sigma.vercel.app/',
+  },
+  {
+    title: 'Move it',
+    description: 'A pomodoro project developed at Rocketseats Next Level Week.',
+    image: '/moveit.png',
+    link: 'https://moveit-blush-xi.vercel.app/',
   },
 ]

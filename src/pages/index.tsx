@@ -1,12 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 import Container from '@core/Container'
 import Timeline from '@components/Timeline'
+import Carousel from '@components/Carousel'
+import DivideY from '@core/Divide/Divide'
 import Contact from '@components/Contact'
 import Header from '@components/Header'
 import Image from 'next/image'
 import React from 'react'
 import Head from 'next/head'
 
-import { experience } from '@utils/config'
+import { experience, projects } from '@utils/config'
 
 export default function Home() {
   return (
@@ -20,73 +23,70 @@ export default function Home() {
 
       <Header />
 
-      <Container
-        id="about-me"
-        className="mt-36 w-full flex flex-col-reverse md:flex-row items-center space-x-6"
-      >
-        <div className="space-y-6">
-          <span>
-            <h1 className="text-4xl md:text-6xl font-bold">Samara Carvalho</h1>
-            <p className="text-xl">Front-end Developer</p>
-          </span>
+      <DivideY>
+        <Container
+          id="about-me"
+          className="mt-36 w-full flex flex-col-reverse md:flex-row items-center space-x-6"
+        >
+          <div className="space-y-6">
+            <span>
+              <h1 className="text-4xl md:text-6xl font-bold">
+                Samara Carvalho
+              </h1>
+              <p className="text-xl">Front-end Developer</p>
+            </span>
 
-          <p className="text-xl">
-            Densenvolvedora apaixonada em aprender novas habilidades e enfrentar
-            desafios que podem me impulsionar a outros níveis 🚀
-          </p>
+            <p className="text-xl">
+              Densenvolvedora apaixonada em aprender novas habilidades e
+              enfrentar desafios que podem me impulsionar a outros níveis 🚀
+            </p>
 
-          <p className="text-xl">
-            Tenho como especialidade frontend, mas também possuo conhecimento em
-            desenvolvimento backend e mobile 💜
-          </p>
-        </div>
+            <p className="text-xl">
+              Tenho como especialidade frontend, mas também possuo conhecimento
+              em desenvolvimento backend e mobile 💜
+            </p>
+          </div>
 
-        <Image
-          src="/sam.png"
-          alt="Samara Carvalho"
-          sizes="100%"
-          width={360}
-          height={360}
-          className="hidden md:block"
-        />
-      </Container>
+          <Image
+            src="/sam.png"
+            alt="Samara Carvalho"
+            sizes="100%"
+            width={360}
+            height={360}
+            className="hidden md:block"
+          />
+        </Container>
 
-      <span className="bg-[url(/lights.png)] bg-cover bg-center w-full h-[36vh] absolute top-[42vh] -z-20" />
+        <Container className="w-full">
+          <Timeline id="experience" title="Experience" data={experience} />
+        </Container>
 
-      <Container className="w-full mt-24 md:mt-36">
-        <Timeline id="experience" title="Experience" data={experience} />
+        <Container className="w-full">
+          <Carousel id="projects" title="Projects" data={projects} />
+        </Container>
 
-        <Timeline
-          id="projects"
-          title="Projects"
-          data={experience.slice(0, 1)}
-        />
-      </Container>
+        <Container id="technologies" className="w-full">
+          <h4 className="text-3xl font-bold">Technologies</h4>
 
-      <span className="bg-[url(/lights.png)] bg-cover bg-center w-full h-[36vh] absolute top-[142vh] -z-20" />
+          <div className="backdrop-blur-md rounded-lg mt-6">
+            <img
+              src="https://skillicons.dev/icons?i=html,css,js,ts,react,next,nodejs,tailwind,materialui,docker,mongodb,prisma,figma,git,redux,sass,graphql,firebase&perline=9"
+              alt="Technologies"
+            />
+          </div>
+        </Container>
 
-      <Container id="technologies" className="w-full">
-        <h4 className="text-3xl font-bold">Technologies</h4>
+        {/* <Container className="w-full border-l-2 border-pink-500">
+          <p>Se falhar, tente novamente! A disciplina vence o talento.</p>
+        </Container> */}
 
-        <p className="text-xl">
-          Densenvolvedora apaixonada em aprender novas habilidades e enfrentar
-          desafios que podem me impulsionar a outros níveis 🚀
-        </p>
-
-        <p className="text-xl">
-          Tenho como especialidade frontend, mas também possuo conhecimento em
-          desenvolvimento backend e mobile 💜
-        </p>
-      </Container>
-
-      <Container
-        id="contact"
-        className="w-full mt-20 flex flex-row justify-between space-x-6"
-      >
-        <Contact />
-      </Container>
-
-      <span className="bg-[url(/lights.png)] bg-cover bg-center w-full h-[36vh] absolute top-[256vh] -z-20" />
+        <Container
+          id="contact"
+          className="w-full flex flex-row justify-between space-x-6"
+        >
+          <Contact />
+        </Container>
+      </DivideY>
     </>
   )
 }

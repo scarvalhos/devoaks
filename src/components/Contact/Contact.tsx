@@ -1,79 +1,59 @@
 import React from 'react'
 
-interface FormFields {
-  subject?: string
-  message?: string
-}
+import {
+  TbBrandGithub,
+  TbBrandGmail,
+  TbBrandInstagram,
+  TbBrandWhatsapp,
+} from 'react-icons/tb'
 
 const Contact: React.FC = () => {
-  const [formFields, dispatch] = React.useReducer(
-    (prev: FormFields, next: FormFields) => {
-      return { ...prev, ...next }
-    },
-    {
-      subject: '',
-      message: '',
-    }
-  )
-
-  const mail = React.useMemo(
-    () =>
-      formFields?.subject &&
-      formFields?.message &&
-      `mailto:samcarvalhos@hotmail.com?Subject=${encodeURI(
-        formFields?.subject
-      )}&body=${encodeURI(formFields?.message)}`,
-    [formFields]
-  )
-
   return (
-    <>
-      <div className="flex flex-col flex-1 space-y-4">
+    <div className="flex flex-col md:flex-row justify-between md:items-center items-start space-y-4 md:space-y-0 w-full">
+      <div className="flex flex-col space-y-4 max-w-sm">
         <h4 className="text-3xl font-bold">Contact</h4>
 
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          in ex in mi semper porttitor. Nam non tortor non metus aliquam
-          hendrerit sit amet id quam.
+          in ex in mi semper porttitor.
         </p>
       </div>
 
-      <div className="flex-1 space-y-4">
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="">Assunto</label>
-          <input
-            type="text"
-            placeholder="Digite aqui..."
-            value={formFields.subject}
-            onChange={(e) => dispatch({ subject: e.target.value })}
-            className="outline-none border-none rounded-md px-6 py-4 backdrop-blur-sm bg-zinc-900 bg-opacity-40"
-          />
-        </div>
-
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="">Mensagem</label>
-          <textarea
-            cols={30}
-            rows={6}
-            placeholder="Digite aqui..."
-            value={formFields.message}
-            onChange={(e) => dispatch({ message: e.target.value })}
-            className="outline-none border-none rounded-md px-6 py-4 backdrop-blur-sm bg-zinc-900 bg-opacity-40"
-          />
-        </div>
-
-        <div className="flex justify-end">
-          <a
-            href={mail}
-            target="_blank"
-            rel="noreferrer"
-            className="bg-gradient-to-tr from-pink-500 to-purple-600 px-6 py-2 rounded-full w-fit"
-          >
-            Enviar
-          </a>
-        </div>
+      <div className="flex items-center justify-center space-x-4">
+        <a
+          href="https://instagram.com/samcarvalhos"
+          target="_blank"
+          rel="noreferrer"
+          className="p-3 bg-gray-900 hover:bg-pink-500 rounded-full transition-all"
+        >
+          <TbBrandInstagram />
+        </a>
+        <a
+          href="mailto:samcarvalhos@hotmail.com"
+          target="_blank"
+          rel="noreferrer"
+          className="p-3 bg-gray-900 hover:bg-red-500 rounded-full transition-all"
+        >
+          <TbBrandGmail />
+        </a>
+        <a
+          href="https://github.com/scarvalhos"
+          target="_blank"
+          rel="noreferrer"
+          className="p-3 bg-gray-900 hover:bg-gray-800 rounded-full transition-all"
+        >
+          <TbBrandGithub />
+        </a>
+        <a
+          href="https://api.whatsapp.com/send?phone=5527999021768"
+          target="_blank"
+          rel="noreferrer"
+          className="p-3 bg-gray-900 hover:bg-green-500 rounded-full transition-all"
+        >
+          <TbBrandWhatsapp />
+        </a>
       </div>
-    </>
+    </div>
   )
 }
 

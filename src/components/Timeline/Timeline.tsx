@@ -1,3 +1,4 @@
+import { TbLink } from 'react-icons/tb'
 import { c } from '@utils/tailwind-utils'
 
 import Image from 'next/image'
@@ -6,7 +7,7 @@ interface TimelineProps {
   id: string
   title: string
   data: {
-    period: string
+    period?: string
     title: string
     description: string
     image: string
@@ -59,13 +60,13 @@ const Timeline: React.FC<TimelineProps> = ({ title, data, id }) => {
           {data.map((d) => (
             <div
               key={d.image}
-              className="absolute flex flex-col justify-between h-[200px]"
+              className="absolute flex flex-col space-y-8"
               style={{
                 top: data.findIndex((i) => i.title === d.title) * 300,
               }}
             >
               <span className="space-y-2">
-                <p className="text-pink-500">{d.period}</p>
+                <p className="text-purple-500">{d.period}</p>
 
                 <p className="font-semibold text-xl">{d.title}</p>
 
@@ -77,9 +78,12 @@ const Timeline: React.FC<TimelineProps> = ({ title, data, id }) => {
                   href={d.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-gradient-to-tr from-pink-500 to-purple-600 px-6 py-2 rounded-full w-fit"
+                  className="flex items-center space-x-1"
                 >
-                  Acessar
+                  <p className="bg-gradient-to-tr from-pink-500 to-purple-600 bg-clip-text text-transparent font-semibold">
+                    Acessar
+                  </p>
+                  <TbLink className="text-purple-500" />
                 </a>
               )}
             </div>
