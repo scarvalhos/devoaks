@@ -4,6 +4,7 @@ import {
   TbBrandGithub,
   TbBrandGmail,
   TbBrandInstagram,
+  TbBrandLinkedin,
   TbBrandWhatsapp,
 } from 'react-icons/tb'
 
@@ -43,6 +44,14 @@ const Contact: React.FC = () => {
           className="p-3 bg-gray-900 hover:bg-gray-800 rounded-full transition-all"
         >
           <TbBrandGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/samcarvalhos/"
+          target="_blank"
+          rel="noreferrer"
+          className="p-3 bg-gray-900 hover:bg-blue-600 rounded-full transition-all"
+        >
+          <TbBrandLinkedin />
         </a>
         <a
           href="https://api.whatsapp.com/send?phone=5527999021768"
