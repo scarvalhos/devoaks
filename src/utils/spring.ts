@@ -45,6 +45,6 @@ export const transitionY = {
 
 export const config = {
   once: false,
-  rootMargin: '0px 0px -30% 0px',
+  rootMargin: '0px 0px -20% 0px',
   amount: buildInteractionObserverThreshold(),
 }
