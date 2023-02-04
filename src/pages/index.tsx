@@ -5,13 +5,22 @@ import Carousel from '@components/Carousel'
 import DivideY from '@core/Divide/Divide'
 import Contact from '@components/Contact'
 import Header from '@components/Header'
-import Image from 'next/image'
 import React from 'react'
 import Head from 'next/head'
 
 import { experience, projects } from '@utils/config'
+import { animated, useInView } from '@react-spring/web'
+import { config, transitionY } from '@utils/spring'
 
 export default function Home() {
+  const [refTechnologies, springsTechnologies] = useInView(
+    () => transitionY,
+    config
+  )
+
+  const [refContact, springsContact] = useInView(() => transitionY, config)
+  const [refAbout, springsAbout] = useInView(() => transitionY, config)
+
   return (
     <>
       <Head>
@@ -26,9 +35,13 @@ export default function Home() {
       <DivideY>
         <Container
           id="about-me"
-          className="mt-36 w-full flex flex-col-reverse md:flex-row items-center space-x-6"
+          className="mt-16 md:mt-36 w-full flex flex-col-reverse md:flex-row items-center md:space-x-6"
         >
-          <div className="space-y-6">
+          <animated.div
+            style={springsAbout}
+            ref={refAbout}
+            className="space-y-6"
+          >
             <span>
               <h1 className="text-4xl md:text-6xl font-bold">
                 Samara Carvalho
@@ -45,46 +58,53 @@ export default function Home() {
               Tenho como especialidade frontend, mas também possuo conhecimento
               em desenvolvimento backend e mobile 💜
             </p>
-          </div>
+          </animated.div>
 
-          <Image
+          <animated.img
+            style={springsAbout}
+            ref={refAbout}
             src="/sam.png"
             alt="Samara Carvalho"
             sizes="100%"
             width={360}
             height={360}
-            className="hidden md:block"
+            className="max-md:scale-75"
           />
         </Container>
 
-        <Container className="w-full">
-          <Timeline id="experience" title="Experience" data={experience} />
+        <Container id="experience" className="w-full">
+          <Timeline title="Experience" data={experience} />
         </Container>
 
-        <Container className="w-full">
-          <Carousel id="projects" title="Projects" data={projects} />
+        <Container id="projects" className="w-full">
+          <Carousel title="Projects" data={projects} />
         </Container>
 
         <Container id="technologies" className="w-full">
-          <h4 className="text-3xl font-bold">Technologies</h4>
+          <animated.div style={springsTechnologies} ref={refTechnologies}>
+            <h4 className="text-3xl font-bold">Technologies</h4>
 
-          <div className="backdrop-blur-md rounded-lg mt-6">
-            <img
-              src="https://skillicons.dev/icons?i=html,css,js,ts,react,next,nodejs,tailwind,materialui,docker,mongodb,prisma,figma,git,redux,sass,graphql,firebase&perline=9"
-              alt="Technologies"
-            />
-          </div>
+            <div className="backdrop-blur-md rounded-lg mt-6">
+              <img
+                src="https://skillicons.dev/icons?i=html,css,js,ts,react,next,nodejs,tailwind,materialui,docker,mongodb,prisma,figma,git,redux,sass,graphql,firebase&perline=9"
+                alt="Technologies"
+              />
+            </div>
+          </animated.div>
         </Container>
 
         {/* <Container className="w-full border-l-2 border-pink-500">
           <p>Se falhar, tente novamente! A disciplina vence o talento.</p>
         </Container> */}
 
-        <Container
-          id="contact"
-          className="w-full flex flex-row justify-between space-x-6"
-        >
-          <Contact />
+        <Container id="contact" className="w-full">
+          <animated.div
+            className="w-full flex flex-row justify-between space-x-6"
+            style={springsContact}
+            ref={refContact}
+          >
+            <Contact />
+          </animated.div>
         </Container>
       </DivideY>
     </>

@@ -1,11 +1,13 @@
 import { TbArrowLeft, TbArrowRight, TbLink } from 'react-icons/tb'
+import { animated, useInView } from '@react-spring/web'
+import { transitionY, config } from '@utils/spring'
 import { c } from '@utils/tailwind-utils'
 
 import Image from 'next/image'
 import React from 'react'
 
 interface CarouselProps {
-  id: string
+  id?: string
   title: string
   data: {
     period?: string
@@ -19,8 +21,10 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
   const [active, setActive] = React.useState(0)
 
+  const [ref, springs] = useInView(() => transitionY, config)
+
   return (
-    <>
+    <animated.div style={springs} ref={ref}>
       <span className="flex justify-between items-center">
         <h4 id={id} className="text-3xl font-bold">
           {title}
@@ -56,10 +60,10 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
               <div
                 key={d.image}
                 className={c(
-                  'border border-opacity-10 border-white backdrop-blur-md w-full flex flex-col md:flex-row justify-between rounded-lg relative shadow-lg'
+                  'border border-opacity-10 border-white backdrop-blur-md w-full flex flex-col-reverse md:flex-row justify-between rounded-lg relative shadow-lg'
                 )}
               >
-                <div className="space-y-4 p-14 flex items-start justify-between flex-col">
+                <div className="space-y-4 px-12 py-8 flex items-start justify-between flex-col">
                   <span>
                     <p className="text-pink-500">{d.period}</p>
 
@@ -103,7 +107,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
           </button>
         </div>
 
-        <div className="flex items-center justify-center mt-16 space-x-4">
+        <div className="flex items-center justify-center mt-6 md:mt-16 space-x-4">
           {data.map((d, i) => (
             <div
               key={d.title}
@@ -115,7 +119,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
           ))}
         </div>
       </div>
-    </>
+    </animated.div>
   )
 }
 

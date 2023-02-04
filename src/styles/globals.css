@@ -86,6 +86,24 @@
   margin: 0;
 }
 
+::-webkit-scrollbar-track {
+  background-color: #202020;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background: #313131;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #474747;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
 html,
 body {
   width: 100vw;
@@ -105,8 +123,8 @@ body {
     rgb(var(--background-start-rgb));
   background-image: url('/planets.png');
   background-size: cover;
-  background-position: top;
-  padding-bottom: 10rem;
+  background-position: top right;
+  padding-bottom: 20rem;
 }
 
 a {
@@ -177,4 +195,13 @@ a {
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
