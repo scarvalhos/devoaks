@@ -111,6 +111,7 @@ body {
   font-family: 'Urbanist', sans-serif;
   scroll-behavior: smooth;
   position: relative;
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -176,15 +177,6 @@ a {
     transform: none;
     height: 300px;
   }
-}
-
-#about-me,
-#experience,
-#projects,
-#technologies,
-#contact {
-  scroll-margin-block-start: 120px;
-  scroll-margin-block-end: 120px;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
