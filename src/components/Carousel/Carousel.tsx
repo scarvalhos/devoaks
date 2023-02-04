@@ -49,7 +49,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
       <div className="relative">
         <button
           onClick={() => active !== 0 && setActive(active - 1)}
-          className="hidden lg:block backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3 absolute -left-16 top-[160px] -translate-y-[50%] z-50"
+          className="hidden lg:block backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3 absolute -left-16 top-[160px] -translate-y-[50%] z-40"
         >
           <TbArrowLeft />
         </button>
@@ -101,7 +101,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
 
           <button
             onClick={() => active < data.length - 1 && setActive(active + 1)}
-            className="hidden lg:block backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3 absolute -right-16 top-[160px] -translate-y-[50%] z-50"
+            className="hidden lg:block backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3 absolute -right-16 top-[160px] -translate-y-[50%] z-40"
           >
             <TbArrowRight />
           </button>
