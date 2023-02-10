@@ -50,13 +50,13 @@ export default function Home() {
             </span>
 
             <p className="text-xl">
-              Densenvolvedora apaixonada em aprender novas habilidades e
-              enfrentar desafios que podem me impulsionar a outros níveis 🚀
+              Developer passionate about learning new skills and facing
+              challenges that can push me to new levels 🚀
             </p>
 
             <p className="text-xl">
-              Tenho como especialidade frontend, mas também possuo conhecimento
-              em desenvolvimento backend e mobile 💜
+              My specialty is frontend, but I also have knowledge in backend and
+              mobile development 💜
             </p>
           </animated.div>
 
@@ -92,10 +92,6 @@ export default function Home() {
             </div>
           </animated.div>
         </Container>
-
-        {/* <Container className="w-full border-l-2 border-pink-500">
-          <p>Se falhar, tente novamente! A disciplina vence o talento.</p>
-        </Container> */}
 
         <Container id="contact" className="w-full">
           <animated.div

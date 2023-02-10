@@ -1,3 +1,4 @@
+import { generateArrayOfNumbers, useBreakpoint } from 'hytzen-helpers'
 import { TbArrowLeft, TbArrowRight, TbLink } from 'react-icons/tb'
 import { animated, useInView } from '@react-spring/web'
 import { transitionY, config } from '@utils/spring'
@@ -18,10 +19,20 @@ interface CarouselProps {
   }[]
 }
 
-const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
+const Carousel: React.FC<CarouselProps> = ({ data: _data, id, title }) => {
   const [active, setActive] = React.useState(0)
 
+  const { md } = useBreakpoint()
+
   const [ref, springs] = useInView(() => transitionY, config)
+
+  const data = React.useMemo(
+    () => (_data.length % 2 !== 0 ? _data.concat({} as any) : _data),
+    [_data]
+  )
+
+  const itemsPerPage = md ? 2 : 1
+  const pageStart = md ? 1 : 2
 
   return (
     <animated.div style={springs} ref={ref}>
@@ -30,15 +41,17 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
           {title}
         </h4>
 
-        <div className="lg:hidden space-x-4">
+        <div className="space-x-4">
           <button
-            onClick={() => active !== 0 && setActive(active - 1)}
+            onClick={() => active !== 0 && setActive(active - itemsPerPage)}
             className="backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3"
           >
             <TbArrowLeft />
           </button>
           <button
-            onClick={() => active < data.length - 1 && setActive(active + 1)}
+            onClick={() =>
+              active < data.length - 2 && setActive(active + itemsPerPage)
+            }
             className="backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3"
           >
             <TbArrowRight />
@@ -46,45 +59,41 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
         </div>
       </span>
 
-      <div className="relative">
-        <button
-          onClick={() => active !== 0 && setActive(active - 1)}
-          className="hidden lg:block backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3 absolute -left-16 top-[160px] -translate-y-[50%] z-40"
-        >
-          <TbArrowLeft />
-        </button>
+      <div className="py-6">
+        <div className="flex space-x-10">
+          {data.slice(active, active + itemsPerPage).map((d) => (
+            <div
+              key={d.image}
+              className={c(
+                'backdrop-blur-md flex-1 flex flex-col-reverse justify-between rounded-lg relative shadow-lg',
+                d.image
+                  ? 'border border-opacity-10 border-white'
+                  : 'border-none'
+              )}
+            >
+              <div className="space-y-4 px-12 py-8 flex items-start justify-between flex-col">
+                <span>
+                  <p className="text-pink-500">{d.period}</p>
 
-        <div className="py-6">
-          <div className="flex space-x-10">
-            {data.slice(active, active + 1).map((d) => (
-              <div
-                key={d.image}
-                className={c(
-                  'border border-opacity-10 border-white backdrop-blur-md w-full flex flex-col-reverse md:flex-row justify-between rounded-lg relative shadow-lg'
+                  <p className="font-semibold text-2xl">{d.title}</p>
+
+                  <p>{d.description}</p>
+                </span>
+
+                {d.link && (
+                  <a
+                    href={d.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center space-x-1 bg-gradient-to-tr from-pink-500 to-purple-600 font-semibold px-6 py-2 rounded-full"
+                  >
+                    <p>Acessar</p>
+                    <TbLink />
+                  </a>
                 )}
-              >
-                <div className="space-y-4 px-12 py-8 flex items-start justify-between flex-col">
-                  <span>
-                    <p className="text-pink-500">{d.period}</p>
+              </div>
 
-                    <p className="font-semibold text-2xl">{d.title}</p>
-
-                    <p>{d.description}</p>
-                  </span>
-
-                  {d.link && (
-                    <a
-                      href={d.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center space-x-1 bg-gradient-to-tr from-pink-500 to-purple-600 font-semibold px-6 py-2 rounded-full"
-                    >
-                      <p>Acessar</p>
-                      <TbLink />
-                    </a>
-                  )}
-                </div>
-
+              {d.image ? (
                 <Image
                   src={d.image}
                   alt={d.title}
@@ -95,28 +104,23 @@ const Carousel: React.FC<CarouselProps> = ({ data, id, title }) => {
                     !d.image && 'animate-pulse'
                   )}
                 />
-              </div>
-            ))}
-          </div>
-
-          <button
-            onClick={() => active < data.length - 1 && setActive(active + 1)}
-            className="hidden lg:block backdrop-blur-md border border-opacity-10 border-white hover:bg-purple-500 transition-all rounded-full p-3 absolute -right-16 top-[160px] -translate-y-[50%] z-40"
-          >
-            <TbArrowRight />
-          </button>
+              ) : null}
+            </div>
+          ))}
         </div>
 
         <div className="flex items-center justify-center mt-6 md:mt-16 space-x-4">
-          {data.map((d, i) => (
-            <div
-              key={d.title}
-              className={c(
-                'w-2 h-2 rounded-full transition-all',
-                active === i ? 'bg-pink-500' : 'bg-gray-800'
-              )}
-            />
-          ))}
+          {generateArrayOfNumbers(pageStart, data.length / itemsPerPage).map(
+            (d, i) => (
+              <div
+                key={d}
+                className={c(
+                  'w-2 h-2 rounded-full transition-all',
+                  active === i * itemsPerPage ? 'bg-pink-500' : 'bg-gray-800'
+                )}
+              />
+            )
+          )}
         </div>
       </div>
     </animated.div>

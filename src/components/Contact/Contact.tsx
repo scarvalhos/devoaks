@@ -14,9 +14,9 @@ const Contact: React.FC = () => {
       <div className="flex flex-col space-y-4 max-w-sm">
         <h4 className="text-3xl font-bold">Contact</h4>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          in ex in mi semper porttitor.
+        <p className="text-xl">
+          Discipline trumps talent.
+          <strong> If you fail, try again!</strong>
         </p>
       </div>
 

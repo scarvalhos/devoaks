@@ -23,30 +23,26 @@ export const navLinks = [
 
 export const experience = [
   {
-    period: 'Nov de 2022 - o momento · 4 meses',
-    title: 'Frontend Developer at Kroton Tech (Cogna)',
+    period: 'Nov de 2022 - moment',
+    title: 'Frontend Developer at Kroton (Cogna Educação)',
     description:
-      'Atuação como desenvolvedora frontend júnior III no sistema de plataforma EAD da Cogna Educação, uma das maiores organizações educacionais privadas do Brasil.',
-    image:
-      'https://images.unsplash.com/photo-1624996752380-8ec242e0f85d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+      'Acting as junior frontend developer III in the EAD platform system of Cogna Educação, one of the largest private educational organizations in Brazil.',
+    image: '/cogna.png',
     link: 'https://www.kroton.com.br/',
   },
   {
-    period: 'Mai de 2022 - nov de 2022 · 7 meses',
+    period: 'May de 2022 - nov de 2022 · 7 months',
     title: 'Frontend Developer at Quikdev',
     description:
-      'Atuação como desenvolvedora frontend júnior I em projetos de terceiros gerenciados pela empresa.',
-    image:
-      'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+      'Acting as junior frontend developer I in third-party projects managed by the company.',
+    image: '/quik.png',
     link: 'https://quikdev.com.br/',
   },
   {
-    period: 'Mar de 2021 - mai de 2021 · 2 meses',
+    period: 'Mar de 2021 - mai de 2021 · 2 months',
     title: 'Freelancer to Leme Internet',
-    description:
-      'Desenvolvimento de uma landing page para a empresa Leme Internet.',
-    image:
-      'https://images.unsplash.com/photo-1618389041494-8fab89c3f22b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    description: 'Development of a landing page for the Leme Internet company.',
+    image: '/leme.png',
     link: 'https://www.lemeinternet.com.br/',
   },
 ]
@@ -54,7 +50,7 @@ export const experience = [
 export const projects = [
   {
     title: 'Hytzen Shop',
-    description: 'E-commerce fullstack construído do zero.',
+    description: 'Fullstack e-commerce built from scratch.',
     image: '/hytzenshop.png',
     link: 'https://www.shop.hytzen.com/',
   },
@@ -64,6 +60,12 @@ export const projects = [
       'React Minimal Gallery is a minimalist image gallery library build with tailwincss for simple projects.',
     image: '/react-minimal-gallery.gif',
     link: 'https://www.npmjs.com/package/react-minimal-gallery',
+  },
+  {
+    title: 'Hytzen Helpers',
+    description: 'A library with helper functions for react projects.',
+    image: '/hytzen-helpers.png',
+    link: 'https://www.npmjs.com/package/hytzen-helpers',
   },
   {
     title: 'Ignews',
