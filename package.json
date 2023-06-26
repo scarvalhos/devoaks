@@ -14,16 +14,14 @@
     "@react-spring/web": "^9.6.1",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
-    "hytzen-helpers": "^1.0.9",
+    "hytzen-helpers": "^1.1.2",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1"
   },
   "devDependencies": {
-    "@types/is-uuid": "^1.0.0",
     "@types/node": "18.11.18",
-    "@types/object-path": "^0.11.1",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "autoprefixer": "^10.4.13",

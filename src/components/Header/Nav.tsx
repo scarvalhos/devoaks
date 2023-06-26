@@ -1,46 +1,17 @@
-import { animated, useSpring } from '@react-spring/web'
-import { StateProps } from './Header'
+import { NavLink, NavLinkType } from './NavLink'
+import { State, StateAction } from './Header'
 import { TbMenu } from 'react-icons/tb'
-import { c } from '@utils/tailwind-utils'
+import { ctc } from 'hytzen-helpers'
 
 import React from 'react'
 
 interface NavProps {
-  links: {
-    title: string
-    href: string
-  }[]
-  dispatch: React.Dispatch<StateProps>
-  state: StateProps
+  links: NavLinkType[]
+  dispatch: React.Dispatch<StateAction>
+  state: State
 }
 
 export const Nav: React.FC<NavProps> = ({ links, dispatch, state }) => {
-  const [springs, api] = useSpring(() => ({
-    from: {
-      opacity: 0,
-      width: '0',
-    },
-    to: {
-      opacity: 1,
-      width: '100%',
-    },
-  }))
-
-  const handleClick = (link: string) => {
-    dispatch({ activeLink: link })
-
-    return api.start({
-      from: {
-        opacity: 0,
-        width: '0',
-      },
-      to: {
-        opacity: 1,
-        width: '100%',
-      },
-    })
-  }
-
   return (
     <nav>
       <button
@@ -52,22 +23,14 @@ export const Nav: React.FC<NavProps> = ({ links, dispatch, state }) => {
 
       <span className="hidden md:block">
         {links.map((link) => (
-          <a
+          <NavLink
             key={link.title}
             href={link.href}
-            onClick={() => handleClick(link.href)}
-            className={c('px-6 py-6 font-semibold relative')}
-          >
-            {link.title}
-            {state.activeLink === link.href && (
-              <animated.div
-                style={{
-                  ...springs,
-                }}
-                className="rounded-t-lg w-[100%] h-1 bg-pink-500 absolute -bottom-1 left-0"
-              />
-            )}
-          </a>
+            title={link.title}
+            activeLink={state.activeLink}
+            onLinkClick={() => dispatch({ activeLink: link.href })}
+            className={ctc('px-6 py-6 font-semibold relative')}
+          />
         ))}
       </span>
     </nav>

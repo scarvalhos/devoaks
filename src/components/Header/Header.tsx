@@ -3,25 +3,29 @@ import React from 'react'
 
 import { navLinks } from '@utils/config'
 import { LogoSvg } from '@core/Icons'
+import { ctc } from 'hytzen-helpers'
+
+import { NavLink } from './NavLink'
 import { TbMenu } from 'react-icons/tb'
 import { Nav } from './Nav'
-import { c } from '@utils/tailwind-utils'
 
-export interface StateProps {
+export type State = {
   activeLink?: string
   openMobileMenu?: boolean
 }
 
+export type StateAction = Partial<State>
+
+const reducer: React.Reducer<State, StateAction> = (prev, next) => ({
+  ...prev,
+  ...next,
+})
+
 const Header: React.FC = () => {
-  const [state, dispatch] = React.useReducer(
-    (prev: StateProps, next: StateProps) => {
-      return { ...prev, ...next }
-    },
-    {
-      activeLink: navLinks[0].href,
-      openMobileMenu: false,
-    }
-  )
+  const [state, dispatch] = React.useReducer(reducer, {
+    activeLink: navLinks[0].href,
+    openMobileMenu: false,
+  })
 
   return (
     <>
@@ -46,18 +50,19 @@ const Header: React.FC = () => {
 
           <div className="flex flex-col mt-20">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.title}
                 href={link.href}
-                onClick={() =>
+                title={link.title}
+                className={ctc('px-6 py-6 font-semibold')}
+                activeLink={state.activeLink}
+                onLinkClick={() =>
                   dispatch({
                     openMobileMenu: false,
+                    activeLink: link.href,
                   })
                 }
-                className={c('px-6 py-6 font-semibold')}
-              >
-                {link.title}
-              </a>
+              />
             ))}
           </div>
         </div>

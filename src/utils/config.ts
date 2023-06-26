@@ -1,22 +1,22 @@
 export const navLinks = [
   {
-    title: 'About me',
+    title: 'Sobre mim',
     href: '#about-me',
   },
   {
-    title: 'Experience',
+    title: 'Experiência',
     href: '#experience',
   },
   {
-    title: 'Projects',
+    title: 'Projetos',
     href: '#projects',
   },
   {
-    title: 'Technologies',
+    title: 'Tecnologias',
     href: '#technologies',
   },
   {
-    title: 'Contact',
+    title: 'Contato',
     href: '#contact',
   },
 ]
@@ -78,5 +78,63 @@ export const projects = [
     description: 'A pomodoro project developed at Rocketseats Next Level Week.',
     image: '/moveit.png',
     link: 'https://moveit-blush-xi.vercel.app/',
+  },
+]
+
+export const technologies = [
+  {
+    title: 'Node.js',
+    image: '/node.png',
+    description:
+      'Node.js is an open-source, cross-platform JavaScript runtime environment.',
+    link: 'https://nodejs.org/en',
+  },
+  {
+    title: 'Typescript',
+    image: '/typescript.png',
+    description:
+      'TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.',
+    link: 'https://www.typescriptlang.org/',
+  },
+  {
+    title: 'Java',
+    image: 'https://conteige.cloud/wp-content/uploads/2021/07/java.png',
+    description:
+      'Uma linguagem de programação orientada a objetos desenvolvida na década de 90',
+    link: 'https://www.java.com/pt-BR/',
+  },
+  {
+    title: 'Kotlin',
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kotlin_Icon.png/1024px-Kotlin_Icon.png',
+    description:
+      'Uma linguagem de programação multiplataforma, orientada a objetos e funcional',
+    link: 'https://kotlinlang.org/',
+  },
+  {
+    title: 'React',
+    image: '/react.png',
+    description: 'React is a JavaScript library for building user interfaces.',
+    link: 'https://react.dev/',
+  },
+  {
+    title: 'Next.js',
+    image: '/next.png',
+    description:
+      'Next.js enables you to create full-stack web applications by extending the latest React features, and integrating powerful Rust-based JavaScript tooling for the fastest builds.',
+    link: 'https://nextjs.org/',
+  },
+  {
+    title: 'React Native',
+    image: '/react.png',
+    description: 'A framework for building native apps using React.',
+    link: 'https://reactnative.dev/',
+  },
+  {
+    title: 'Expo',
+    image: '/expo.png',
+    description:
+      'Expo is a free and open-source platform for making universal native apps with React that run on Android, iOS, and the web.',
+    link: 'https://expo.dev/',
   },
 ]

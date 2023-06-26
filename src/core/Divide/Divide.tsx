@@ -1,5 +1,6 @@
-import { c } from '@utils/tailwind-utils'
 import React from 'react'
+
+import { ctc } from 'hytzen-helpers'
 
 export interface DivideProps {
   id?: string
@@ -36,7 +37,7 @@ const DivideY: React.FC<DivideProps> = ({
       {kids.map((node, index) => (
         <React.Fragment key={index}>
           {index > 0 && !skipIndexes.includes(index) && (
-            <hr className={c('my-10 border-none', dividerClassName)} />
+            <hr className={ctc('my-10 border-none', dividerClassName)} />
           )}
           {skipIndexes.includes(index) && <div className="mb-4" />}
           {node}

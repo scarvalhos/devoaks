@@ -8,17 +8,24 @@ import {
   TbBrandWhatsapp,
 } from 'react-icons/tb'
 
-const Contact: React.FC = () => {
-  return (
-    <div className="flex flex-col md:flex-row justify-between md:items-center items-start space-y-4 md:space-y-0 w-full">
-      <div className="flex flex-col space-y-4 max-w-sm">
-        <h4 className="text-3xl font-bold">Contact</h4>
+import { animated, useInView } from '@react-spring/web'
+import { config, transitionY } from '@utils/spring'
 
-        <p className="text-xl">
-          Discipline trumps talent.
-          <strong> If you fail, try again!</strong>
-        </p>
-      </div>
+interface ContactProps {
+  id?: string
+}
+
+const Contact: React.FC<ContactProps> = ({ id }) => {
+  const [ref, springs] = useInView(() => transitionY, config)
+
+  return (
+    <animated.div
+      className="w-full flex h-[60vh] flex-col justify-center items-center space-y-8"
+      style={springs}
+      ref={ref}
+      id={id}
+    >
+      <h4 className="text-3xl font-bold">Contato</h4>
 
       <div className="flex items-center justify-center space-x-4">
         <a
@@ -62,7 +69,7 @@ const Contact: React.FC = () => {
           <TbBrandWhatsapp />
         </a>
       </div>
-    </div>
+    </animated.div>
   )
 }
 
