@@ -25,7 +25,7 @@ const Me: React.FC<MeProps> = ({ id }) => {
         <animated.img
           src="/me.jpeg"
           alt="Samara Carvalho"
-          className="w-[70%] h-[70%] md:w-80 md:h-80 rounded-full border border-purple-500"
+          className="w-[250px] h-[250px] md:w-80 md:h-80 object-cover object-center rounded-full border border-purple-500"
           ref={refImg}
           style={springsImg}
         />
