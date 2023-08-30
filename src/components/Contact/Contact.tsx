@@ -33,6 +33,11 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
           target="_blank"
           rel="noreferrer"
           className="p-3 bg-gray-900 hover:bg-pink-500 rounded-full transition-all"
+          onClick={() =>
+            (window as any).gtag('event', 'contact_click', {
+              channel: 'instagram',
+            })
+          }
         >
           <TbBrandInstagram />
         </a>
@@ -41,6 +46,11 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
           target="_blank"
           rel="noreferrer"
           className="p-3 bg-gray-900 hover:bg-red-500 rounded-full transition-all"
+          onClick={() =>
+            (window as any).gtag('event', 'contact_click', {
+              channel: 'whatsapp',
+            })
+          }
         >
           <TbBrandGmail />
         </a>
@@ -49,6 +59,11 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
           target="_blank"
           rel="noreferrer"
           className="p-3 bg-gray-900 hover:bg-gray-800 rounded-full transition-all"
+          onClick={() =>
+            (window as any).gtag('event', 'contact_click', {
+              channel: 'whatsapp',
+            })
+          }
         >
           <TbBrandGithub />
         </a>
@@ -57,6 +72,11 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
           target="_blank"
           rel="noreferrer"
           className="p-3 bg-gray-900 hover:bg-blue-600 rounded-full transition-all"
+          onClick={() =>
+            (window as any).gtag('event', 'contact_click', {
+              channel: 'whatsapp',
+            })
+          }
         >
           <TbBrandLinkedin />
         </a>
@@ -65,6 +85,11 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
           target="_blank"
           rel="noreferrer"
           className="p-3 bg-gray-900 hover:bg-green-500 rounded-full transition-all"
+          onClick={() =>
+            (window as any).gtag('event', 'contact_click', {
+              channel: 'whatsapp',
+            })
+          }
         >
           <TbBrandWhatsapp />
         </a>
