@@ -42,10 +42,8 @@ export const NavLink: React.FC<NavLinkProps> = ({
   const nativeScroll = (distanceFromTheTop: number) => {
     window.scroll({
       behavior: 'smooth',
-      top:
-        distanceFromTheTop === 0
-          ? distanceFromTheTop
-          : distanceFromTheTop - 120,
+      top: distanceFromTheTop,
+      // distanceFromTheTop === 0 ? distanceFromTheTop : distanceFromTheTop - 0,
     })
   }
 

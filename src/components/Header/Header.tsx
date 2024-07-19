@@ -1,5 +1,6 @@
 import Container from '@core/Container'
 import React from 'react'
+import Link from 'next/link'
 
 import { navLinks } from '@utils/config'
 import { LogoSvg } from '@core/Icons'
@@ -31,9 +32,9 @@ const Header: React.FC = () => {
     <>
       <header className="w-full fixed top-0 backdrop-blur-md border-b border-opacity-10 border-b-white z-50">
         <Container className="flex justify-between items-center">
-          <span className="py-6">
+          <Link href="/" className="py-6">
             <LogoSvg />
-          </span>
+          </Link>
 
           <Nav links={navLinks} state={state} dispatch={dispatch} />
         </Container>

@@ -40,53 +40,60 @@ const Carousel: React.FC<CarouselProps> = ({ data: _data, id, title }) => {
   )
 
   return (
-    <animated.div id={id} style={springs} ref={ref} className="space-y-20">
-      <span className="flex justify-center items-center">
-        <h4 className="text-3xl text-center font-bold">
-          {colorfyFirstWord(title)}
-        </h4>
-      </span>
+    <animated.div
+      id={id}
+      style={springs}
+      ref={ref}
+      className="min-h-screen flex flex-col items-center justify-center space-y-20"
+    >
+      <h4 className="text-3xl text-center font-bold">
+        {colorfyFirstWord(title)}
+      </h4>
 
       <div className="flex space-x-10">
-        {data.slice(active, active + itemsPerPage).map((d) => (
+        {data.slice(active, active + itemsPerPage).map((project) => (
           <div
-            key={d.image}
+            key={project.image}
             className={ctc(
               'backdrop-blur-md flex-1 flex flex-col-reverse justify-between rounded-lg relative shadow-lg',
-              d.image ? 'border border-opacity-10 border-white' : 'border-none'
+              project.image
+                ? 'border border-opacity-10 border-white'
+                : 'border-none'
             )}
           >
-            <div className="space-y-4 px-12 py-8 flex items-start justify-between flex-col">
-              <span>
-                <p className="text-pink-500">{d.period}</p>
+            <div className="flex items-start justify-between flex-col gap-6 px-12 py-8">
+              <div className="flex flex-col gap-2">
+                <p className="text-pink-500">{project.period}</p>
 
-                <p className="font-semibold text-2xl">{d.title}</p>
+                <p className="font-semibold text-2xl">{project.title}</p>
 
-                <p>{d.description}</p>
-              </span>
+                <p className="text-slate-400">{project.description}</p>
+              </div>
 
-              {d.link && (
+              {project.link && (
                 <a
-                  href={d.link}
+                  href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center space-x-1 bg-gradient-to-tr from-pink-500 to-purple-600 font-semibold px-6 py-2 rounded-full"
+                  className="flex items-center space-x-1"
                 >
-                  <p>Acessar</p>
-                  <TbLink />
+                  <p className="bg-gradient-to-tr from-pink-500 to-purple-600 bg-clip-text text-transparent font-semibold">
+                    Acessar
+                  </p>
+                  <TbLink className="text-purple-500" />
                 </a>
               )}
             </div>
 
-            {d.image ? (
+            {project.image ? (
               <Image
-                src={d.image}
-                alt={d.title}
+                src={project.image}
+                alt={project.title}
                 width={480}
                 height={280}
                 className={ctc(
-                  'w-full h-full md:h-[280px] bg-neutral-800 rounded-lg object-cover shadow-lg',
-                  !d.image && 'animate-pulse'
+                  'w-full h-full md:h-[200px] bg-neutral-800 rounded-lg object-cover shadow-lg',
+                  !project.image && 'animate-pulse'
                 )}
               />
             ) : null}

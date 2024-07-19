@@ -22,7 +22,12 @@ const Technologies: React.FC<CarouselProps> = ({ data, id, title }) => {
   const [ref, springs] = useInView(() => transitionY, config)
 
   return (
-    <animated.div id={id} style={springs} ref={ref} className="space-y-20">
+    <animated.div
+      id={id}
+      style={springs}
+      ref={ref}
+      className="min-h-screen flex flex-col justify-center items-center space-y-20 py-44"
+    >
       <div className="flex justify-center items-center">
         <h4 className="text-3xl text-center font-bold">
           {colorfyLastWord(title)}
@@ -34,7 +39,7 @@ const Technologies: React.FC<CarouselProps> = ({ data, id, title }) => {
           <div
             key={d.image}
             className={ctc(
-              'backdrop-blur-md flex flex-col rounded-lg relative shadow-lg space-y-6 border border-opacity-30 border-stone-700 p-6 hover:border-opacity-60 select-none'
+              'backdrop-blur-md flex flex-col items-center justify-center rounded-lg relative shadow-lg gap-2 border border-opacity-30 border-stone-700 py-6 px-4 hover:border-opacity-60 select-none'
             )}
           >
             {d.image ? (
@@ -48,10 +53,7 @@ const Technologies: React.FC<CarouselProps> = ({ data, id, title }) => {
               />
             ) : null}
 
-            <div className="space-y-4">
-              <p className="font-semibold text-lg">{d.title}</p>
-              <p>{d.description}</p>
-            </div>
+            <p className="font-semibold text-lg">{d.title}</p>
           </div>
         ))}
       </div>

@@ -1,7 +1,11 @@
 export const navLinks = [
   {
+    title: 'Home',
+    href: '#about-me-home',
+  },
+  {
     title: 'Sobre mim',
-    href: '#about-me',
+    href: '#about-me-description',
   },
   {
     title: 'Experiência',

@@ -71,7 +71,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 
         <p className="font-semibold text-xl">{title}</p>
 
-        <p className="truncate">{description}</p>
+        <p className="truncate text-slate-400">{description}</p>
       </span>
 
       {link && (
@@ -101,16 +101,20 @@ interface TimelineProps {
 
 const Timeline: React.FC<TimelineProps> = ({ title, data, id }) => {
   return (
-    <div id={id} className="space-y-20">
+    <div id={id} className="min-h-screen space-y-20 py-44">
       <h4 className="text-3xl text-center font-bold">
         {colorfyLastWord(title)}
       </h4>
 
       <div className="flex space-x-10">
         <div className="hidden md:block space-y-14 w-full">
-          {data.map((d) => {
-            return <AnimatedImg key={d.image} title={d.title} image={d.image} />
-          })}
+          {data.map((experience) => (
+            <AnimatedImg
+              key={experience.image}
+              title={experience.title}
+              image={experience.image}
+            />
+          ))}
         </div>
 
         <div
@@ -131,14 +135,14 @@ const Timeline: React.FC<TimelineProps> = ({ title, data, id }) => {
         </div>
 
         <div className="relative w-full">
-          {data.map((d, i) => (
+          {data.map((experience) => (
             <AnimatedContent
-              key={d.image}
-              title={d.title}
+              key={experience.image}
+              title={experience.title}
               data={data}
-              link={d.link}
-              description={d.description}
-              period={d.period}
+              link={experience.link}
+              description={experience.description}
+              period={experience.period}
             />
           ))}
         </div>

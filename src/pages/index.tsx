@@ -2,7 +2,6 @@ import Technologies from '@components/Technologies'
 import Container from '@core/Container'
 import Timeline from '@components/Timeline'
 import Carousel from '@components/Carousel'
-import DivideY from '@core/Divide/Divide'
 import Contact from '@components/Contact'
 import Header from '@components/Header'
 import React from 'react'
@@ -11,8 +10,11 @@ import Me from '@components/Me'
 import { experience, projects, technologies } from '@utils/config'
 import { BackgroundVideo } from '@components/BackgroundVideo'
 import { NextSeo } from 'next-seo'
+import { useBreakpoint } from 'hytzen-helpers'
 
 export default function Home() {
+  const { md } = useBreakpoint()
+
   return (
     <>
       <NextSeo
@@ -24,26 +26,26 @@ export default function Home() {
 
       <Header />
 
-      <BackgroundVideo />
+      {md ? <BackgroundVideo /> : null}
 
       <Container className="w-full">
-        <DivideY>
-          <Me id="about-me" />
+        <Me.Home id="about-me-home" />
 
-          <Timeline
-            id="experience"
-            title="Experiência profissional"
-            data={experience}
-          />
+        <Me.Description id="about-me-description" />
 
-          <Carousel id="projects" title="Projetos pessoais" data={projects} />
+        <Timeline
+          id="experience"
+          title="Experiência profissional"
+          data={experience}
+        />
 
-          <Technologies
-            id="technologies"
-            title="Principais tecnologias"
-            data={technologies}
-          />
-        </DivideY>
+        <Carousel id="projects" title="Projetos pessoais" data={projects} />
+
+        <Technologies
+          id="technologies"
+          title="Principais tecnologias"
+          data={technologies}
+        />
 
         <Contact id="contact" />
       </Container>

@@ -72,7 +72,7 @@ html,
 body {
   font-family: 'Urbanist', sans-serif;
   scroll-behavior: smooth;
-  scroll-padding-top: 190px;
+  /* scroll-padding-top: 190px; */
 }
 
 body {
